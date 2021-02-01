@@ -5,6 +5,7 @@ from lcu_driver import Connector
 from lcu_driver.utils import return_process
 
 import os
+import easygui
 
 
 def wait_for_league():
@@ -44,3 +45,11 @@ def my_exit(icon, item=None):
     icon.update_menu()
     icon.stop()
     os._exit(0)
+    
+
+def about():
+    easygui.msgbox("""Program created by rogama25. This is free and open source, avaliable on
+https://github.com/rogama25/lol-random-skin-picker-py.
+
+Version 0.1""",
+                   "LoL random skin selector")
