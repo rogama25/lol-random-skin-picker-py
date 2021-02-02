@@ -28,6 +28,8 @@ When running the program, an icon will be added to the tray. On most OS, you jus
 
 To exit the program, just close the League client or right-click the tray icon, and select `Exit`.
 
+**If you want to get the English names for the skins, just create a file or folder named exactly `english` in the same folder as the executable. IMPORTANT: If you run it from a terminal, you need to place it in the folder where you are when running the script.**
+
 ## My antivirus is flagging this as a virus!
 It seems like PyInstaller, a program that I use to compile my Python scripts to get an .exe file, so it can be run easily [it's getting flagged by some antivirus](https://github.com/pyinstaller/pyinstaller/issues/5490). There isn't much I can do to fix this myself.
 
