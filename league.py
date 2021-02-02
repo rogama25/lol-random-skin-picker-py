@@ -55,6 +55,7 @@ async def connect(connection: Connection):
                 icon.update_menu()
                 time.sleep(2)
                 continue
+            champ_id = data["selectedChampionId"]
             menu_item._text = menu_item._wrap("Randomize")
             menu_item._enabled = menu_item._wrap(True)
             icon.update_menu()
@@ -76,7 +77,8 @@ async def connect(connection: Connection):
                 req = await connection.request("patch", req_type, data=req_data)
                 data = await req.json()
                 print("Available", list_skins, skin_names, "Chosen", selected)
-                easygui.msgbox("Skin selected: " + get_skin_name(selected, skin_names, list_skins), "LoL random skin selector")
+                easygui.msgbox("Skin selected: " + get_skin_name(selected, skin_names, list_skins, champ_id),
+                "LoL random skin selector")
             time.sleep(1)
         except Exception as e:
             print(e)

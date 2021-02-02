@@ -57,22 +57,27 @@ https://github.com/rogama25/lol-random-skin-picker-py.
 Version 0.2""",
                    "LoL random skin selector")
 
-def get_skin_name(selected, skin_names, skin_ids):
+def get_skin_name(selected, skin_names, skin_ids, champ_id):
     if os.path.exists("./english"):
         global version
-        champ_name = str(skin_names[0])
-        if champ_name == "Wukong":
-            champ_name = "MonkeyKing"
+        champ_name = ""
+        champ_name_cool = ""
         if version is None:
             print("Downloading versions...")
             versions = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()
             version = str(versions[0])
+        all_champ_info = requests.get("http://ddragon.leagueoflegends.com/cdn/11.2.1/data/en_US/champion.json").json()
+        for champion in all_champ_info["data"]:
+            if all_champ_info["data"][champion]["key"] == str(champ_id):
+                champ_name = champion
+                champ_name_cool = all_champ_info["data"][champion]["name"]
+                break
         print("Getting data for", champ_name)
         champ_info = requests.get("http://ddragon.leagueoflegends.com/cdn/" + version +
         "/data/en_US/champion/" + champ_name + ".json").json()
         for skin in champ_info["data"][champ_name]["skins"]:
             if skin["id"] == str(selected):
                 if skin["name"] == "default":
-                    return champ_name
+                    return champ_name_cool
                 return skin["name"]
     return skin_names[skin_ids.index(selected)]
