@@ -54,7 +54,7 @@ def about():
     easygui.msgbox("""Program created by rogama25. This is free and open source, avaliable on
 https://github.com/rogama25/lol-random-skin-picker-py.
 
-Version 0.1""",
+Version 0.2""",
                    "LoL random skin selector")
 
 def get_skin_name(selected, skin_names, skin_ids):
