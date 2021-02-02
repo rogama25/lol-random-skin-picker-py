@@ -2,7 +2,7 @@ import time
 import logging
 from lcu_driver.connection import Connection
 import threading
-from utils import MyConnector, my_exit
+from utils import MyConnector, my_exit, get_skin_name
 import random
 import easygui
 
@@ -76,9 +76,10 @@ async def connect(connection: Connection):
                 req = await connection.request("patch", req_type, data=req_data)
                 data = await req.json()
                 print("Available", list_skins, skin_names, "Chosen", selected)
-                easygui.msgbox("Skin selected: " + str(skin_names[pos]), "LoL random skin selector")
+                easygui.msgbox("Skin selected: " + get_skin_name(selected, skin_names, list_skins), "LoL random skin selector")
             time.sleep(1)
-        except:
+        except Exception as e:
+            print(e)
             my_exit(icon)
 
 
